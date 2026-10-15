@@ -20,7 +20,7 @@ No build step or package installation is required. Serve this folder with any st
 python -m http.server 8000
 ```
 
-Open `http://localhost:8000/Data%20Sanitization%20Workbench.html`.
+Open `http://localhost:8000/`. The `index.html` entry point is also ready for static hosting platforms such as Netlify; publish the repository root as the site directory.
 
 The page loads Tailwind CSS and fonts from external CDNs. Internet access is needed for those assets and for Gemini analysis.
 
