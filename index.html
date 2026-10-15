@@ -63,7 +63,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div id="step-nav-2" onclick="switchStep(2)" class="p-3 rounded-xl border border-slate-700 bg-slate-900/40 opacity-70 cursor-pointer transition-all">
+                <div id="step-nav-2" onclick="navigateToDiagnostics()" class="p-3 rounded-xl border border-slate-700 bg-slate-900/40 opacity-70 cursor-pointer transition-all">
                     <div class="flex items-center justify-between mb-1">
                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Step 2</span>
                         <span id="badge-2" class="text-xs px-2 py-0.5 rounded-full bg-slate-700 text-slate-300 font-medium">Pending</span>
@@ -73,7 +73,7 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div id="step-nav-3" onclick="switchStep(3)" class="p-3 rounded-xl border border-slate-700 bg-slate-900/40 opacity-70 cursor-pointer transition-all">
+                <div id="step-nav-3" onclick="navigateToReview()" class="p-3 rounded-xl border border-slate-700 bg-slate-900/40 opacity-70 cursor-pointer transition-all">
                     <div class="flex items-center justify-between mb-1">
                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Step 3</span>
                         <span id="badge-3" class="text-xs px-2 py-0.5 rounded-full bg-slate-700 text-slate-300 font-medium">Pending</span>
@@ -83,7 +83,7 @@
                 </div>
 
                 <!-- Step 4 -->
-                <div id="step-nav-4" onclick="switchStep(4)" class="p-3 rounded-xl border border-slate-700 bg-slate-900/40 opacity-70 cursor-pointer transition-all">
+                <div id="step-nav-4" onclick="navigateToExport()" class="p-3 rounded-xl border border-slate-700 bg-slate-900/40 opacity-70 cursor-pointer transition-all">
                     <div class="flex items-center justify-between mb-1">
                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wide">Step 4</span>
                         <span id="badge-4" class="text-xs px-2 py-0.5 rounded-full bg-slate-700 text-slate-300 font-medium">Pending</span>
@@ -225,7 +225,7 @@
                     <div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden shadow-lg">
                         <div class="px-4 py-3 bg-slate-800/90 border-b border-slate-700 flex justify-between items-center">
                             <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Detected Issues & Proposed Corrections</span>
-                            <span id="findings-source" class="text-xs text-indigo-400 font-mono">Local checks</span>
+                            <span id="findings-source" class="text-xs text-indigo-400 font-mono">Not run</span>
                         </div>
                         <div class="divide-y divide-slate-700/50 max-h-80 overflow-y-auto" id="findings-container">
                             <!-- Populated dynamically -->
@@ -361,6 +361,7 @@
         let geminiApiKey = "";
         let analysisInProgress = false;
         let datasetRevision = 0;
+        let analyzedRevision = -1;
         let aiDiagnostics = {
             missingCount: 0,
             formatCount: 0,
@@ -451,6 +452,46 @@
             }
         }
 
+        function navigateToDiagnostics() {
+            if (analysisInProgress) {
+                switchStep(2);
+                return;
+            }
+            if (parsedRows.length === 0) {
+                showToast("Upload a CSV file before running diagnostics.", 'error');
+                switchStep(1);
+                return;
+            }
+            if (analyzedRevision !== datasetRevision) {
+                startAiAnalysis();
+                return;
+            }
+            switchStep(2);
+        }
+
+        function navigateToReview() {
+            if (analysisInProgress) {
+                showToast("Wait for data analysis to finish before reviewing fixes.", 'error');
+                switchStep(2);
+                return;
+            }
+            if (parsedRows.length === 0 || analyzedRevision !== datasetRevision) {
+                showToast("Run data quality analysis before reviewing fixes.", 'error');
+                navigateToDiagnostics();
+                return;
+            }
+            goToReviewStep();
+        }
+
+        function navigateToExport() {
+            if (cleanedRows.length === 0) {
+                showToast("Review and apply fixes before opening the export step.", 'error');
+                navigateToReview();
+                return;
+            }
+            switchStep(4);
+        }
+
         function handleFileUpload(event) {
             const file = event.target.files[0];
             if (!file) return;
@@ -497,6 +538,7 @@
                 parsedRows.push(rowObj);
             }
             datasetRevision++;
+            analyzedRevision = -1;
             aiDiagnostics = {
                 missingCount: 0,
                 formatCount: 0,
@@ -603,6 +645,7 @@
 
             try {
                 runDiagnosticsAlgorithm();
+                analyzedRevision = revision;
             } catch (error) {
                 finishAnalysis();
                 showToast(`Local diagnostics failed: ${error.message}`, 'error');
@@ -819,7 +862,7 @@
                 );
                 if (duplicateIndex === -1) {
                     merged.push(fix);
-                } else if (fix.source === "Gemini" || fix.source === existing.source) {
+                } else if (fix.source === "Gemini" || fix.source === merged[duplicateIndex].source) {
                     merged[duplicateIndex] = fix;
                 }
             });
@@ -1124,8 +1167,25 @@
             rawCsvText = "";
             parsedRows = [];
             cleanedRows = [];
+            datasetRevision++;
+            analyzedRevision = -1;
+            aiDiagnostics = {
+                missingCount: 0,
+                formatCount: 0,
+                duplicateCount: 0,
+                suspiciousCount: 0,
+                fixCandidates: [],
+                findings: []
+            };
             document.getElementById('csv-file-input').value = "";
             document.getElementById('raw-preview-container').classList.add('hidden');
+            document.getElementById('findings-container').innerHTML = "";
+            document.getElementById('findings-source').textContent = "Not run";
+            document.getElementById('stat-missing').textContent = "--";
+            document.getElementById('stat-format').textContent = "--";
+            document.getElementById('stat-duplicates').textContent = "--";
+            document.getElementById('stat-suspicious').textContent = "--";
+            document.getElementById('sidebar-row-count').textContent = "0";
             switchStep(1);
             showToast("Workbench reset for new dataset ingestion.");
         }
