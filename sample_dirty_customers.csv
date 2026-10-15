@@ -1,0 +1,9 @@
+id,name,email,phone,signup_date,status
+1,  Alice Smith  , ALICE@EXAMPLE.COM ,(555) 010-1001,2024-01-15, active 
+2,Bob Jones,bob.jones.example.com,555.010.1002,01/22/2024,pending
+3,  Charlie Brown  ,,555 010 1003,2024-02-30,active
+4,Dana O'Connor,dana@example.com,,2024-02-04,
+5,Eli Davis,eli@@example.com,not-a-phone,yesterday,inactive
+6,Frank White, frank.white@example.com ,555-010-1006,2024-03-18, ACTIVE 
+7,<b>Grace Hopper</b>,GRACE@EXAMPLE.COM,555-010-1007,03/20/2024,active
+8,Bob Jones,bob.jones.example.com,555.010.1002,01/22/2024,pending

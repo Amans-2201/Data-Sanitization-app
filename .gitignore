@@ -1,0 +1,6 @@
+# Ignore generated or uploaded CSV data by default.
+*.csv
+
+# Keep the intentionally dirty sample datasets used for testing.
+!sample_dirty_customers.csv
+!sample_dirty_products.csv

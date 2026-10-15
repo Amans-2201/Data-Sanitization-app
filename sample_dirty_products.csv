@@ -1,0 +1,51 @@
+product_id,product_name,category,sku,price,stock,launch_date,status,description
+2001,"  Wireless Mouse  ",Electronics,WM-1001,24.99,120,2024-01-15,active,Ergonomic wireless mouse
+2002,USB-C Cable,Accessories,USBC-2M,9.5,350,01/20/2024, Active ,2 meter braided cable
+2003,Desk Lamp,Home,DL-3001,39.99,45,2024-02-01,active,LED lamp with dimmer
+2004,Noise Cancelling Headphones,Electronics,NC-H500,129.99,32,2024-02-14,ACTIVE,Over-ear headphones
+2005,Notebook Set,Stationery,NB-SET-5,12.00,200,2024-02-30,active,Five ruled notebooks
+2006,  Ceramic Mug,Kitchen,CM-12OZ,8.75,88,2024-03-03,active,White ceramic mug
+2007,Portable SSD,Electronics,SSD-1TB,89.00,17,2024-03-10,active,1TB external solid state drive
+2008,Phone Stand,Accessories,PS-AL-01,15.49,0,2024-03-12,out of stock,Aluminum adjustable stand
+2009,Running Shoes,Sports,RS-42-BLK,74.95,26,2024-03-18,active,Black running shoes size 42
+2010,Water Bottle,Sports,WB-750,18.00,-4,2024-03-20,active,Stainless steel bottle
+2011,Mechanical Keyboard,Electronics,MK-87,99.99,14,2024-04-02,active,Compact mechanical keyboard
+2012,Desk Organizer,Office,DO-BAMBOO,22.5,64,2024-04-05, Active ,Bamboo organizer tray
+2013,Protein Shaker,Fitness,SHK-700,11.99,105,2024-04-08,active,Leak resistant shaker bottle
+2014,Travel Backpack,Bags,TB-28L,59.00,21,2024-04-15,active,28 liter carry-on backpack
+2015,Screen Cleaner,Accessories,SC-KIT,5.99,500,2024-04-18,active,Microfiber cleaning kit
+2016,Smart Watch,Electronics,SW-X2,199.95,9,2024-04-22,active,Fitness and notification watch
+2017,Plant Pot,Home,PP-6IN,14.25,73,2024-05-01,active,6 inch terracotta pot
+2018,USB Hub,Electronics,USBH-7P,32.00,41,2024-05-04,active,Seven port USB hub
+2019,Gift Card,Other,GC-50,50.00,999,2024-05-08,active,Digital gift card
+2020,Leather Wallet,Accessories,LW-BRN-01,45.00,18,2024-05-12,discontinued,Classic brown leather wallet
+2021,HDMI Adapter,Electronics,HDMI-A2,invalid,30,2024-05-16,active,USB-C to HDMI adapter
+2022,Floor Cushion,Home,FC-LRG,39.00,12,2024-05-19,active,Large floor cushion
+2023,Organic Green Tea,Grocery,TEA-GRN-20,7.49,160,2024-05-22,active,20 bag green tea box
+2024, Yoga Mat ,Fitness,YM-6MM,28.99,52,2024-05-25, active ,Non-slip exercise mat
+2025,Wireless Mouse,Electronics,WM-1001,24.99,120,2024-01-15,active,Duplicate product record
+2026,Wall Clock,Home,WC-12,25.00,33,2024-06-02,active,Silent wall clock
+2027,,"Office",PEN-BOX-12,6.25,240,2024-06-05,active,Box of blue ink pens
+2028,Phone Case,Accessories,PC-IP15,19.99,75,2024-06-08,active,Clear phone case
+2029,Air Purifier,Home,AP-MINI,119.00,6,2024-06-12,active,Compact air purifier
+2030,Camping Lantern,Outdoor,CL-LED-02,27.50,28,2024-06-15,active,Rechargeable LED lantern
+2031,Laptop Sleeve,Bags,LS-14-GRY,21.00,43,2024-06-18,active,14 inch gray laptop sleeve
+2032,Desk Chair,Office,CHR-ERG-01,249.99,5,2024-06-22,active,Ergonomic adjustable chair
+2033,Face Wash,Beauty,FW-150ML,13.49,81,2024-06-25,active,Gentle daily cleanser
+2034,Coffee Grinder,Kitchen,CG-SS-4,invalid-price,19,2024-06-28,active,Stainless steel burr grinder
+2035,Canvas Tote,Bags,CT-NAT,12.50,115,2024-07-01,active,Natural cotton tote bag
+2036,Pet Brush,Pet,PB-DOG-M,10.99,36,2024-07-04,active,Medium grooming brush
+2037,Smart Bulb,Electronics,SB-RGB-9,17.99,67,2024-07-08,active,Color changing LED bulb
+2038,Table Runner,Home,TR-LINEN,23.00,22,2024-07-10,active,Linen table runner
+2039,First Aid Kit,Outdoor,FAK-TRVL,16.75,48,2024-07-12,active,Travel size first aid kit
+2040,Chocolate Bar,Grocery,CHOC-70,3.25,300,2024-07-15,active,Dark chocolate 70 percent
+2041,External Hard Drive,Electronics,EHD-2TB,109.99,11,2024-07-18,active,2TB portable hard drive
+2042,  Cotton Towel Set  ,Bath,TS-COT-4,34.00,29,2024-07-20, active ,Four piece cotton towel set
+2043,Children's Puzzle,Toys,PUZ-100,14.99,54,2024-07-24,active,100 piece landscape puzzle
+2044,Car Phone Mount,Automotive,CPM-VENT,18.25,39,2024-07-27,active,Air vent phone mount
+2045,Wireless Charger,Electronics,WC-QI-15,29.99,0,2024-07-30,active,15 watt charging pad
+2046,Hand Soap,Beauty,HS-500,4.99,92,2024-08-02,active,Unscented liquid hand soap
+2047,Security Camera,Electronics,CAM-OUT-1,79.00,13,2024-08-05,active,<b>Outdoor camera</b>
+2048,Reusable Straws,Kitchen,RS-SIL-6,8.00,183,not-a-date,active,Set of six silicone straws
+2049,SQL Guide Book,Books,BOOK-SQL-01,31.50,16,2024-08-10,active,' OR 1=1 -- beginner database guide
+2050,Wireless Earbuds,Electronics,WE-BUDS-PRO,0,7,2024-08-14,active,Premium wireless earbuds
